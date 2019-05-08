@@ -1,0 +1,17 @@
+.cell img {
+    display: inline-block;
+    padding: 5px;
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+    .cell {
+        padding: 0 5px ;
+        width: calc(90% / 4);
+    }
+}
+

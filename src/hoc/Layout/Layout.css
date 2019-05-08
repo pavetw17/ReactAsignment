@@ -1,5 +1,48 @@
-.Content{
-    text-align: center;
+.container {
+   margin: 0 15%;
+   max-width: 1281px;
 
 }
 
+.responsive-image {
+   max-width: 100%;
+}
+
+.grid {
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+@media (min-width: 1281px) {
+   .grid {
+      max-width: 100%;
+   }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+
+
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px) {
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+   
+ }
