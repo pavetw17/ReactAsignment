@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
-import Pictures from './Component/Pictures'
+
+import Layout from './hoc/Layout/Layout'
+import ImageList from './containers/ImageContainer/ImageListContainer'
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Pictures />
-      </div>
+        <Layout>
+          <ImageList />
+        </Layout>
     );
   }
 }
