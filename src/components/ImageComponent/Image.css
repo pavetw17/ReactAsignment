@@ -1,17 +1,102 @@
-.cell img {
-    display: inline-block;
-    padding: 5px;
+.cell{
+    border-width: 5px;
+    padding: 10px
 }
 
+.cell img {
+    display: inline-block;
+    /* padding:  10px 10px 0 10px; */
+    /* margin: 10px 10px 0 10px; */
+}
+
+figure{
+    width: 210px;
+    margin: 0;
+    border: 0px solid #777;
+    padding: 8px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 5px;
+  }
+
+figure figcaption{
+    text-align: center;
+    padding: 0 4px 15px 4px;
+}
+
+.responsive-image {
+    width: 190px;
+    height: 130px;
+ }
+ 
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 */
-
 @media (min-width: 1281px) {
     .cell {
-        padding: 0 5px ;
+       
         width: calc(90% / 4);
+        text-align: center;
     }
 }
 
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .cell {
+        
+        width: calc(90% / 4);
+        text-align: center;
+    }
+}
+
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    .cell {
+        
+        width: calc(90% / 3);
+        text-align: center;
+    }
+ }
+
+ /* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .cell {
+        
+        width: calc(90% / 3);
+        text-align: center;
+    }
+ }
+
+
+ /* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+    .cell {
+        
+        width: calc(90% / 2);
+        text-align: center;
+    }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px) {
+    .cell {
+        padding: 10px;
+        width: calc(90% / 1);
+        text-align: center;
+    }
+ }
+ 
