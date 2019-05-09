@@ -3,53 +3,49 @@ import axios from 'axios'
 
 import Aux from '../../hoc/Auxiliary/Auxiliary'
 import Image from '../../components/ImageComponent/Image'
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 
 class ImageList extends Component {
     state = {
-        images: {},
+        images: [],
         imageItems: 20,
-        loadingState: false,
+        start: 0,  
     };
-    
+
     componentDidMount() {
-      this.refs.iScroll.addEventListener("scroll", () => {
-        if (this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight >= this.refs.iScroll.scrollHeight - 20){
-            this.loadItems();
-        }
+      this.fetchMoreData()
+    }
+   
+    fetchMoreData = () => {
+      const { imageItems, start } = this.state;
+      this.setState({ 
+        start: this.state.start + imageItems 
       });
-    }
-   
-    displayItems(imageItems) {
-        axios.get('https://api.giphy.com/v1/gifs/trending?api_key=FuG74WHq1QdFUXq62J2gnqpMjeqx5lVa&limit='+imageItems)
-        .then (response => {
-            this.setState ({ images: response.data })
-        })
-        .catch (error => {
-            this.setState ({ error: true })
-        })
 
-        return (
-                <Image images = {this.state.images}/>
-        );
-    }
+      axios.get("https://api.giphy.com/v1/gifs/trending?api_key=FuG74WHq1QdFUXq62J2gnqpMjeqx5lVa&limit="
+                  +imageItems +"&offset=" +start)
+      .then(res =>
+        {
+          this.setState({ 
+            images: this.state.images.concat(res.data.data) 
+          })
+        }
+      );
+    };
    
-    loadItems() {
-      this.setState({ loadingState: true });
-      setTimeout(() => {
-        this.setState({ imageItems: this.state.imageItems + 20, loadingState: false });
-      }, 3000);
-    }
-   
-
-
     render() {
       return (
         <Aux >
-            <div className='grid' ref="iScroll" style={{ height: "calc(105vh - 100px)", overflow: "auto"}}  >
-                {this.displayItems(this.state.imageItems)}
-                {this.state.loadingState ? <p className="loading"> 
-                   Loading...</p> : ""}
-            </div>
+            <InfiniteScroll
+                dataLength={this.state.images.length}
+                next={this.fetchMoreData}
+                hasMore={true}
+                loader={<h4>Loading...</h4>}
+                className="grid"
+              >
+                <Image images = {this.state.images}/>
+            </InfiniteScroll>
         </Aux>
       );
     }

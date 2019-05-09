@@ -7,6 +7,7 @@
    margin-right: auto;
    top: 0px;
    bottom:0px;
+  
 
 }
 
@@ -15,9 +16,8 @@
    top: 20px;
    display: flex;
    flex-wrap: wrap;
-   flex-direction: row;  
+   flex-direction: row;
 }
-
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
