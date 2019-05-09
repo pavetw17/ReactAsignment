@@ -9,9 +9,7 @@ class Layout extends Component {
         return (
             <Aux>
                 <div className="container">
-                    <div className="grid">
-                        {this.props.children}
-                    </div>
+                    {this.props.children}
                 </div>
             </Aux>
         )
