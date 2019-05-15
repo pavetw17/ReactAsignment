@@ -9,7 +9,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import imageListReducer from './store/reducers/imageListReducer'
 
-const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+let composeEnhancers = compose
+if (process.env.NODE_ENV !== 'production') {
+    if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === 'function') {
+        composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    }
+}
 
 const rootReducer = combineReducers ({
     imageFromGIF: imageListReducer
