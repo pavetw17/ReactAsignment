@@ -1,19 +1,14 @@
 import React, {Component} from 'react'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Aux from '../../hoc/Auxiliary/Auxiliary'
 import Image from '../../components/ImageComponent/Image'
-import InfiniteScroll from 'react-infinite-scroll-component';
-
-const accessKey = 'FuG74WHq1QdFUXq62J2gnqpMjeqx5lVa';
-const linkGIPHY = 'https://api.giphy.com/v1/gifs/trending?api_key'
-const getLink = `${linkGIPHY}=${accessKey}`
+import * as actions from '../../store/actions/index'
+import classes from '../../hoc/Layout/Layout.css'
 
 class ImageList extends Component {
     state = {
-        images: [],
-        imageItems: 20,
-        start: 0,
         active: false,
     };
 
@@ -22,20 +17,7 @@ class ImageList extends Component {
     }
    
     fetchMoreData = () => {
-      const { imageItems, start } = this.state;
-     
-      this.setState({ 
-        start: this.state.start + imageItems
-      });
-          
-      axios.get(getLink + "&limit="+ imageItems +"&offset=" + start)
-      .then(res =>
-        {
-          this.setState({ 
-            images: this.state.images.concat(res.data.data) 
-          })
-        }
-      );
+      this.props.onFetchData()
     };
 
     selectHandler = () => {
@@ -55,13 +37,13 @@ class ImageList extends Component {
       return (
         <Aux >
             <InfiniteScroll
-                dataLength={this.state.images.length}
+                dataLength={this.props.imagesState.length}
                 next={this.fetchMoreData}
                 hasMore={true}
                 loader={<h4>Loading...</h4>}
-                className="grid"
+                className={classes.grid}
               >
-                <Image images = {this.state.images} active={this.state.active} 
+                <Image images = {this.props.imagesState} active={this.state.active} 
                 cancelImage={this.cancelHandler} 
                 selectImage={this.selectHandler}/>
             </InfiniteScroll> 
@@ -70,4 +52,18 @@ class ImageList extends Component {
     }
 }
 
-export default ImageList;
+const mapStateToProps = state => {
+  return {
+    imagesState: state.imageFromGIF.images,
+    imageItemsState: state.imageFromGIF.imageItems,
+    startState: state.imageFromGIF.start,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchData: () => dispatch(actions.fetchData())
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ImageList);

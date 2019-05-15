@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 
 import Aux from '../../hoc/Auxiliary/Auxiliary'
-import './Layout.css'
+import classes from './Layout.css'
 
 
 class Layout extends Component {
     render(){
         return (
             <Aux>
-                <div className="container">
+                <div className={classes.container}>
                     {this.props.children}
                 </div>
             </Aux>

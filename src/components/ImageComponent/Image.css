@@ -29,7 +29,7 @@ figure figcaption {
     padding: 0 4px 15px 4px;
 }
 
-.responsive-image {
+.responsive_image {
     width: 100%;
     height: 150px;
 }
@@ -41,15 +41,15 @@ figure figcaption {
     font-weight: bold;
 }
 
-.eye-icon, .comment-icon, .heart-icon, .link-icon {
+.eye_icon, .comment_icon, .heart_icon, .link_icon {
     color: lightgray;
 }
 
-.eye-icon:hover, .comment-icon:hover, .heart-icon:hover, .link-icon:hover {
+.eye_icon:hover, .comment_icon:hover, .heart_icon:hover, .link_icon:hover {
     color: black;
 }
 
-.lightbox-target {
+.lightbox_target {
     position: absolute;
     top: -100%;
     right: 0%;
@@ -63,7 +63,7 @@ figure figcaption {
     overflow: hidden;
 }
 
-.lightbox-target img {
+.lightbox_target img {
     display: block;
     width: 100%;
     margin: auto;
@@ -83,7 +83,7 @@ figure figcaption {
     transition: .5s ease-in-out;
 }
 
-span.lightbox-close {
+span.lightbox_close {
     display: block;
     width: 50px;
     height: 50px;
@@ -100,7 +100,7 @@ span.lightbox-close {
     transition: .5s ease-in-out;
 }
 
-span.lightbox-close:before {
+span.lightbox_close:before {
     content: "";
     display: block;
     height: 30px;
@@ -115,7 +115,7 @@ span.lightbox-close:before {
     transform: rotate(45deg);
 }
 
-span.lightbox-close:after {
+span.lightbox_close:after {
     content: "";
     display: block;
     height: 30px;
@@ -130,19 +130,19 @@ span.lightbox-close:after {
     transform: rotate(-45deg);
 }
 
-.lightbox-target:target {
+.lightbox_target:target {
     position: fixed;
     opacity: 1;
     top: 0;
     bottom: 0;
 }
 
-.lightbox-target:target img {
+.lightbox_target:target img {
     max-height: 100%;
     max-width: 100%;
 }
 
-.lightbox-target:target span.lightbox-close {
+.lightbox_target:target span.lightbox_close {
     top: 0px;
     position: absolute;
 }

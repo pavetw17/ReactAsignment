@@ -4,3 +4,9 @@
 # misc
 .DS_Store
 /dist
+
+# testing
+/coverage
+
+# production
+/build
