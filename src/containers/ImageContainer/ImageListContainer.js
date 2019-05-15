@@ -5,26 +5,30 @@ import Aux from '../../hoc/Auxiliary/Auxiliary'
 import Image from '../../components/ImageComponent/Image'
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+const accessKey = 'FuG74WHq1QdFUXq62J2gnqpMjeqx5lVa';
+const linkGIPHY = 'https://api.giphy.com/v1/gifs/trending?api_key'
+const getLink = `${linkGIPHY}=${accessKey}`
 
 class ImageList extends Component {
     state = {
         images: [],
         imageItems: 20,
-        start: 0,  
+        start: 0,
+        active: false,
     };
 
     componentDidMount() {
-      this.fetchMoreData()
+      this.fetchMoreData();
     }
    
     fetchMoreData = () => {
       const { imageItems, start } = this.state;
+     
       this.setState({ 
-        start: this.state.start + imageItems 
+        start: this.state.start + imageItems
       });
-
-      axios.get("https://api.giphy.com/v1/gifs/trending?api_key=FuG74WHq1QdFUXq62J2gnqpMjeqx5lVa&limit="
-                  +imageItems +"&offset=" +start)
+          
+      axios.get(getLink + "&limit="+ imageItems +"&offset=" + start)
       .then(res =>
         {
           this.setState({ 
@@ -33,7 +37,20 @@ class ImageList extends Component {
         }
       );
     };
-   
+
+    selectHandler = () => {
+      this.setState({
+        active: true,
+      });
+    }
+  
+    cancelHandler = () => {
+      const { active } = this.state;
+      this.setState({
+        active: !active,
+      });
+    }
+
     render() {
       return (
         <Aux >
@@ -44,8 +61,10 @@ class ImageList extends Component {
                 loader={<h4>Loading...</h4>}
                 className="grid"
               >
-                <Image images = {this.state.images}/>
-            </InfiniteScroll>
+                <Image images = {this.state.images} active={this.state.active} 
+                cancelImage={this.cancelHandler} 
+                selectImage={this.selectHandler}/>
+            </InfiniteScroll> 
         </Aux>
       );
     }
