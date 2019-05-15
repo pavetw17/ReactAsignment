@@ -27,7 +27,7 @@ const image = (props) => {
                         <span style={{ float: 'left' }}>
                             <FontAwesomeIcon icon={faLink} className={classes.link_icon} />
                         </span>
-                        <span className="tab-right">
+                        <span className={classes.tab_right}>
                             <FontAwesomeIcon icon={faEye} className={classes.eye_icon} /> 700 {' '}
                             <FontAwesomeIcon icon={faComment} className={classes.comment_icon} /> 30 {' '}
                             <FontAwesomeIcon icon={faHeart} className={classes.heart_icon} /> 901
