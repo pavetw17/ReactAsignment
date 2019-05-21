@@ -1,4 +1,4 @@
-# Building an app for fetching GIF images from GIPHY.com
+# Building an web app for fetching GIF images from GIPHY.com
 
 A sample for fetching data in react. Feel free to fork, copy and modify as needed.
 
