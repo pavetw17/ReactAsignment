@@ -18,7 +18,7 @@ npm run start
 It will install dependencies, build the `node_modules/` folder and launch a small server at [localhost:3000](http://localhost:3000).
 
 ## Features
-* Adapts to	browser, ipad as well as mobile width.
+* Adapts to browsers, tablets as well as mobiles width.
 * Shows image full screen when clicking or taping on image.
 * Loads maximum 20 images at a time.
 
